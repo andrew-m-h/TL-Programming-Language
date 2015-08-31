@@ -1,4 +1,6 @@
-module Token (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.Token (
 	Op(..),
 	CodeBlock(..),
 	Program(..),
@@ -32,7 +34,17 @@ module Token (
 	fmapC
 	)where
 
+import           Data.Bool (Bool, not, (||), (&&))
+import           Data.Eq (Eq, (==), (/=))
+import           Data.Function (($), flip)
 import qualified Data.IntMap as IM
+import           Data.List ((++), head, elem, drop, map, null)
+import           Data.Ord (Ord, Ordering(..), (>), (<), (>=), (<=), compare)
+import           Data.String (String)
+import           GHC.Exts (Double)
+import           Prelude (Integer, fromIntegral, error, floor, (**), (^), (+), (-), (*), (/), mod, div)
+import           Text.Read (read)
+import           Text.Show (Show, show)
 
 data Token =
 	Null |

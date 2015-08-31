@@ -1,4 +1,6 @@
-module StdLib.StdList (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.StdLib.StdList (
 	lengthTL,
 	totalTL,
 	productTL,
@@ -10,8 +12,15 @@ module StdLib.StdList (
 	enumFromToTL
 	) where
 
-import Data.List (sort, insert, union)
-import Token
+
+import Control.Monad (Monad(..))
+import Data.Function (($), (.))
+import Data.List ((++), elem, map, sort, insert, union, length)
+import GHC.Exts (Double)
+import Prelude (Integer, fromIntegral, error, (*), (+))
+import System.IO (IO)
+import TL.Token (Token(..), Expression, fromLitL)
+import Text.Show (show)
 
 lengthTL :: Expression -> IO(Token)
 lengthTL [LiteralL lst] = return $ LiteralI $ fromIntegral $ length lst

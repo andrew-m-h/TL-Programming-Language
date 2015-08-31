@@ -1,9 +1,15 @@
-module Scoping (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.Scoping (
 	nameSpaceP,
 	scope
 ) where
 
-import Token
+import Data.Function (($))
+import Data.List ((++), map)
+import Data.String (String)
+import Prelude (Integer,fromIntegral, error, floor, (**), (^), (+), (-), (*), (/), mod, div)
+import TL.Token (Token(..), Expression, CodeBlock(..), Program(..))
 
 scope :: [Token] -> Program -> Program
 scope vars (Prog prog) = case prog of

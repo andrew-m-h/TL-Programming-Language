@@ -1,11 +1,19 @@
-module StdLib.StdIO (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.StdLib.StdIO (
 	readFileTL,
 	writeFileTL,
 	appendFileTL,
 	getCharTL
 	) where
 
-import Token
+import Control.Monad (Monad(..))
+import Data.Function (($), (.))
+import Data.List ((++))
+import Prelude (error)
+import System.IO (IO, readFile, writeFile, appendFile, getChar)
+import TL.Token (Token(..), Expression)
+import Text.Show (show)
 
 readFileTL :: Expression -> IO(Token)
 readFileTL [LiteralS path] = readFile path >>= (return . LiteralS)

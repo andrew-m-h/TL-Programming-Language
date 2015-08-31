@@ -1,4 +1,6 @@
-module InterpretTL (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.InterpretTL (
 	program,
 	interpret,
 	function,
@@ -11,11 +13,21 @@ module InterpretTL (
 	expression
 	) where
 
-import ParseTL
-import Token
-import qualified StdLib.Stdlib as Std
-import Control.Monad.State
+import           Control.Monad (Monad (..), mapM)
+import           Control.Monad.State (StateT, get, put, modify, evalStateT, liftIO)
+import           Data.Bool (Bool(..), otherwise, not)
+import           Data.Either (Either(..))
+import           Data.Eq ((==))
+import           Data.Function (($), flip, (.))
+import           Data.List ((++), (!!), head, replicate)
 import qualified Data.Map as M
+import           Data.Maybe (Maybe(..))
+import           Prelude (error, fromEnum, String)
+import           System.IO (IO, putStrLn, putStr, getLine, readFile)
+import           TL.ParseTL (parse, parseProgram)
+import qualified TL.StdLib.Stdlib as Std
+import           Text.Show (show)
+import           TL.Token (Token(..), Expression, Program(..), CodeBlock(..), Op(..), tokenToString, tokenToInt, tokenToBool, opToList, opToListB, opToString, opToFloatB, opToFloat, opToInt, opToIntB, opToBool, isBoolOp, fromLitS, fromLitI, fromLitB, fromLitF, fromLitL, fromVar, opToStringB)
 
 type Variables = M.Map String (Either Token (Expression, Program))
 type TLInterpreter = StateT Variables IO Token

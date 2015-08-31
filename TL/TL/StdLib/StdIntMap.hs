@@ -1,4 +1,6 @@
-module StdLib.StdIntMap (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.StdLib.StdIntMap (
 	intMapTL,
 	memberTL,
 	lookupTL,
@@ -10,8 +12,16 @@ module StdLib.StdIntMap (
 	productTL
 	) where
 
-import Token
+import           Control.Monad (Monad(..))
+import           Data.Function (($))
+import           Data.Int (Int)
 import qualified Data.IntMap as IM
+import           Data.List ((++), head, map, foldr)
+import           Data.Maybe (Maybe(..))
+import           Prelude ( Integer, fromIntegral, fromEnum, error, (*), (+))
+import           System.IO (IO)
+import           TL.Token (Token(..), Expression, fromLitI)
+import           Text.Show (show)
 
 sumTL :: Expression -> IO(Token)
 sumTL [LiteralM m] = case lst of

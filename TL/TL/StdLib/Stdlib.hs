@@ -1,13 +1,21 @@
-module StdLib.Stdlib (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.StdLib.Stdlib (
 	functions,
 	M.lookup
 	) where
 
-import qualified StdLib.StdIntMap as StdM
-import qualified StdLib.StdList as StdL
-import qualified StdLib.StdIO as StdIO
-import Token
+import           Data.Function (($))
+import           Data.List ((++))
 import qualified Data.Map as M
+import           Data.String (String)
+import           Prelude (error)
+import           System.IO (IO)
+import qualified TL.StdLib.StdIO as StdIO
+import qualified TL.StdLib.StdIntMap as StdM
+import qualified TL.StdLib.StdList as StdL
+import           TL.Token (Token(..), Expression)
+import           Text.Show (show)
 
 functions :: M.Map String (Expression -> IO(Token))
 functions = M.fromList [

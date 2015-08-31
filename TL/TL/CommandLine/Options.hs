@@ -1,4 +1,6 @@
-module CommandLine.Options (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.CommandLine.Options (
 	Version(..),
 	Action(..),
 	Options(..),
@@ -10,7 +12,17 @@ module CommandLine.Options (
 	tlHelp
 ) where
 
-import System.Console.GetOpt
+import Control.Monad (Monad(..))
+import Data.Bool (Bool(..))
+import Data.Eq (Eq)
+import Data.Function (($), id, flip)
+import Data.Int (Int)
+import Data.List ((++), concat, foldl)
+import Prelude (String)
+import System.Console.GetOpt (usageInfo, OptDescr(..), ArgDescr(..), ArgOrder(..), getOpt)
+import System.IO (IO)
+import System.IO.Error (ioError, userError)
+import Text.Show (Show, show)
 
 ----------------Version---------------
 data Version = Version Int Int Int

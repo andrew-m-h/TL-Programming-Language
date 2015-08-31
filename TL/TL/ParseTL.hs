@@ -1,14 +1,23 @@
-module ParseTL (
+{-# LANGUAGE NoImplicitPrelude #-}
+
+module TL.ParseTL (
 	tlDef,
 	tlParser,
 	parseProgram,
 	parse,
 	) where
 
-import Token (Op(..), CodeBlock(..), Program(..), Token(..), Expression)
-import Text.Parsec
-import Text.Parsec.String
+import Control.Monad (return, (>>), (>>=))
+import Data.Bool (Bool(..))
+import Data.Function (($), (.))
+import Data.List ((++))
+import Data.String (String)
+import Prelude (Integer, fromIntegral, error, floor, (**), (^), (+), (-), (*), (/), mod, div)
+import TL.Token (Op(..), CodeBlock(..), Program(..), Token(..), Expression)
+import Text.Parsec ((<|>), char, sepBy, try, letter, alphaNum, parserZero, many1, parse)
+import Text.Parsec.String (Parser)
 import Text.Parsec.Token
+import Text.Show (Show, show)
 
 tlDef :: LanguageDef ()
 tlDef = LanguageDef {
