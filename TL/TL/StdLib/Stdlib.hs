@@ -1,7 +1,7 @@
 module TL.StdLib.Stdlib (
-	functions,
-	M.lookup
-	) where
+    functions,
+    M.lookup
+    ) where
 
 import           Data.Function (($))
 import           Data.List ((++))
@@ -17,22 +17,22 @@ import           Text.Show (show)
 
 functions :: M.Map String (Expression -> IO(Token))
 functions = M.fromList [
-	("sum", totalTL),
-	("product", productTL),
-	("length", lengthTL),
-	("member", memberTL),
-	("insert", insertTL),
-	("union", unionTL),
-	("sort", StdL.sortTL),
-	("flatten", StdL.concatTL),
-	("enumFromTo", StdL.enumFromToTL),
-	("intmap", StdM.intMapTL),
-	("lookup", StdM.lookupTL),
-	("readfile", StdIO.readFileTL),
-	("writefile", StdIO.writeFileTL),
-	("appendfile", StdIO.appendFileTL),
-	("getchar", StdIO.getCharTL)
-	]
+    ("sum", totalTL),
+    ("product", productTL),
+    ("length", lengthTL),
+    ("member", memberTL),
+    ("insert", insertTL),
+    ("union", unionTL),
+    ("sort", StdL.sortTL),
+    ("flatten", StdL.concatTL),
+    ("enumFromTo", StdL.enumFromToTL),
+    ("intmap", StdM.intMapTL),
+    ("lookup", StdM.lookupTL),
+    ("readfile", StdIO.readFileTL),
+    ("writefile", StdIO.writeFileTL),
+    ("appendfile", StdIO.appendFileTL),
+    ("getchar", StdIO.getCharTL)
+    ]
 
 lengthTL :: Expression -> IO(Token)
 lengthTL [LiteralL lst] = StdL.lengthTL([LiteralL lst])

@@ -1,9 +1,9 @@
 module TL.StdLib.StdIO (
-	readFileTL,
-	writeFileTL,
-	appendFileTL,
-	getCharTL
-	) where
+    readFileTL,
+    writeFileTL,
+    appendFileTL,
+    getCharTL
+    ) where
 
 import Control.Monad (Monad(..))
 import Data.Function (($), (.))
