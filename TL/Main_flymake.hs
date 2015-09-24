@@ -1,3 +1,6 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+
+import           Control.Applicative
 import           Control.Monad          (Monad (..))
 import           Data.Either            (Either (..))
 import           Data.Function          (($))
@@ -21,6 +24,7 @@ test = do
 
 main :: IO()
 main = do
+  
 	argv <- getArgs
 	(opts, fname) <- tlOptions argv
 	prog <- readFile fname

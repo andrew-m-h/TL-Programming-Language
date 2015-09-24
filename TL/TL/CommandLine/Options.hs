@@ -1,5 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-
 module TL.CommandLine.Options (
 	Version(..),
 	Action(..),

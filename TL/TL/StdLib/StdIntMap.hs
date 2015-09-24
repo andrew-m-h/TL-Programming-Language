@@ -1,5 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-
 module TL.StdLib.StdIntMap (
 	intMapTL,
 	memberTL,

@@ -1,5 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-
 module TL.StdLib.StdIO (
 	readFileTL,
 	writeFileTL,

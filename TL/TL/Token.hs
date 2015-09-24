@@ -1,5 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-
 module TL.Token (
 	Op(..),
 	CodeBlock(..),

@@ -1,5 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-
 module TL.StdLib.StdList (
 	lengthTL,
 	totalTL,
